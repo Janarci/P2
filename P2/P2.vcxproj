@@ -102,12 +102,16 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>SFML_STATIC;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>D:\Libraries\SFML-2.5.1\include;C:\SFML-2.5.1\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>D:\Libraries\SFML-2.5.1\lib;C:\SFML-2.5.1\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>freetype.lib;winmm.lib;opengl32.lib;sfml-graphics-s-d.lib;sfml-window-s-d.lib;sfml-system-s-d.lib;openal32.lib;sfml-audio-s-d.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -127,7 +131,52 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AGameObject.cpp" />
+    <ClCompile Include="AudioLoader.cpp" />
+    <ClCompile Include="AudioManager.cpp" />
+    <ClCompile Include="BaseRunner.cpp" />
+    <ClCompile Include="BGObject.cpp" />
+    <ClCompile Include="FPSCounter.cpp" />
+    <ClCompile Include="GameObjectManager.cpp" />
+    <ClCompile Include="IconObject.cpp" />
+    <ClCompile Include="IETThread.cpp" />
+    <ClCompile Include="IExecutionEvent.cpp" />
+    <ClCompile Include="IWorkerAction.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MathUtils.cpp" />
+    <ClCompile Include="PoolWorkerThread.cpp" />
+    <ClCompile Include="Semaphores.cpp" />
+    <ClCompile Include="StreamAssetLoader.cpp" />
+    <ClCompile Include="StringUtils.cpp" />
+    <ClCompile Include="testRun.cpp" />
+    <ClCompile Include="TextureDisplay.cpp" />
+    <ClCompile Include="TextureManager.cpp" />
+    <ClCompile Include="ThreadPool.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AGameObject.h" />
+    <ClInclude Include="AudioLoader.h" />
+    <ClInclude Include="AudioManager.h" />
+    <ClInclude Include="BaseRunner.h" />
+    <ClInclude Include="BGObject.h" />
+    <ClInclude Include="FPSCounter.h" />
+    <ClInclude Include="GameObjectManager.h" />
+    <ClInclude Include="IconObject.h" />
+    <ClInclude Include="IETThread.h" />
+    <ClInclude Include="IExecutionEvent.h" />
+    <ClInclude Include="IWorkerAction.h" />
+    <ClInclude Include="MathUtils.h" />
+    <ClInclude Include="PoolWorkerThread.h" />
+    <ClInclude Include="Semaphores.h" />
+    <ClInclude Include="StreamAssetLoader.h" />
+    <ClInclude Include="StringUtils.h" />
+    <ClInclude Include="testRun.h" />
+    <ClInclude Include="TextureDisplay.h" />
+    <ClInclude Include="TextureManager.h" />
+    <ClInclude Include="ThreadPool.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="openal32.dll" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
