@@ -44,8 +44,8 @@ void TextureDisplay::update(sf::Time deltaTime)
 void TextureDisplay::onFinishedExecution()
 {
 	//spawnObject();
-	AudioManager::getInstance()->soundList[0]->play();
-	AudioManager::getInstance()->soundList[0]->setVolume(20);
+	//AudioManager::getInstance()->soundList[0]->play();
+	//AudioManager::getInstance()->soundList[0]->setVolume(20);
 
 
 }

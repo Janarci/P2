@@ -34,7 +34,7 @@ private:
 
 	std::vector<sf::Sound*> getSoundList();
 
-	ThreadPool* threadPool = new ThreadPool("newThread", 8);
+	ThreadPool* threadPool = new ThreadPool("newThread", 2);
 
 
 	const std::string STREAMING_PATH = "Media/OST/wav";

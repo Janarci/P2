@@ -78,6 +78,63 @@
     <ClCompile Include="ThreadPool.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Pinball\PinballTextureManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Pinball\ball.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Pinball\body.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Pinball\bumper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Pinball\CirclePhys.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Pinball\manifold.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Pinball\obb.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Pinball\obbPhys.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Pinball\paddle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Pinball\PhysicsShape.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Pinball\Randomiser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Pinball\rect.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Pinball\rectangleBumper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Pinball\rectPhys.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Pinball\rotationMat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Pinball\roundBumper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Pinball\Vector2D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Pinball\PinballMain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Pinball\PinballRunner.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ThreadPool.h">
@@ -138,6 +195,63 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="TextureManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Pinball\PinballTextureManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Pinball\ball.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Pinball\body.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Pinball\bumper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Pinball\CirclePhys.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Pinball\config.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Pinball\manifold.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Pinball\obb.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Pinball\obbPhys.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Pinball\paddle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Pinball\PhysicsShape.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Pinball\Randomiser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Pinball\rect.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Pinball\rectangleBumper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Pinball\rectPhys.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Pinball\rotationMat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Pinball\roundBumper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Pinball\Vector2D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Pinball\PinballRunner.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

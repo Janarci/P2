@@ -19,7 +19,7 @@ AudioLoader::~AudioLoader()
 
 void AudioLoader::onStartTask()
 {
-	IETThread::sleep(1000);
+	IETThread::sleep(3000);
 	//TextureManager::getInstance()->instantiateAsTexture(this->path, "wew", true);
 	AudioManager::getInstance()->loadBuffer(std::to_string(this->key), this->path);
 
