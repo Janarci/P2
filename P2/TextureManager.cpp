@@ -60,11 +60,8 @@ void TextureManager::loadSingleStreamAsset(int index, IExecutionEvent* execution
 	for (const auto& entry : std::filesystem::directory_iterator(STREAMING_PATH)) {
 		if (index == fileNum)
 		{
-			//simulate loading of very large file
-			//<code here for thread sleeping. Fill this up only when instructor told so.>
 
 
-			//<code here for loading asset>
 
 			String path = entry.path().generic_string();
 			std::vector<String> tokens = StringUtils::split(path, '/');
@@ -72,7 +69,6 @@ void TextureManager::loadSingleStreamAsset(int index, IExecutionEvent* execution
 
 			std::cout << assetName << std::endl;
 
-			//std::u8string path_string = entry.path().u8string();
 
 			StreamAssetLoader* assetLoader = new StreamAssetLoader(entry.path().string(), assetName, executionEvent);
 
@@ -82,7 +78,6 @@ void TextureManager::loadSingleStreamAsset(int index, IExecutionEvent* execution
 			threadPool->scheduleTask(assetLoader);
 
 			//this->instantiateAsTexture(entry.path().string(), assetName, true);
-			//std::cout << "[TextureManager] Loaded streaming texture: " << assetName << std::endl;
 			break;
 		}
 

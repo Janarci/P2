@@ -45,7 +45,7 @@ private:
 
 	//pinball vars
 
-    bool spacePressed = false;
+    bool enterPressed = false;
     sf::ContextSettings settings;
 
 
@@ -130,7 +130,7 @@ private:
     sf::Text ballsLeftText = sf::Text("Balls: " + std::to_string(g_iBallsLeft), arcadeFont, 60);
 
     sf::Text gameOverText = sf::Text("GAME OVER", arcadeFont, 150);
-    sf::Text Continue = sf::Text("PRESS SPACE TO CONTINUE", arcadeFont, 150);
+    sf::Text Continue = sf::Text("PRESS ENTER TO CONTINUE", arcadeFont, 100);
     sf::Text Numkeys = sf::Text("PRESS NUMKEYS 1-8", arcadeFont, 150);
 
 

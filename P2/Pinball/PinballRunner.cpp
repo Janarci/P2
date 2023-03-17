@@ -5,9 +5,6 @@
 
 
 
-/// <summary>
-/// This demonstrates a running parallax background where after X seconds, a batch of assets will be streamed and loaded.
-/// </summary>
 const sf::Time PinballRunner::TIME_PER_FRAME = sf::seconds(1.f / 60.f);
 
 PinballRunner::PinballRunner() :
@@ -29,8 +26,12 @@ PinballRunner::PinballRunner() :
 
 
     
-    arcadeFont.loadFromFile("resources\\BebasNeue Regular.otf");
-
+    //arcadeFont.loadFromFile("resources\\BebasNeue Regular.otf");
+    arcadeFont.loadFromFile("Media/Sansation.ttf");
+    Continue.setOutlineColor(sf::Color(1.0f, 1.0f, 1.0f));
+    Continue.setOutlineThickness(2.5f);
+    Numkeys.setOutlineColor(sf::Color(1.0f, 1.0f, 1.0f));
+    Numkeys.setOutlineThickness(2.5f);
 
     highestScoreText.setFillColor(redCol);
     highestScoreText.setPosition(40, 5);
@@ -44,10 +45,10 @@ PinballRunner::PinballRunner() :
     gameOverText.setFillColor(sf::Color::Black);
     gameOverText.setPosition(100, 400);
 
-	Continue.setFillColor(sf::Color::Black);
+	Continue.setFillColor(sf::Color::White);
     Continue.setPosition(300, 400);
 
-    Numkeys.setFillColor(sf::Color::Black);
+    Numkeys.setFillColor(sf::Color::White);
     Numkeys.setPosition(300, 400);
 
     
@@ -191,9 +192,9 @@ void PinballRunner::processEvents()
         case sf::Event::KeyPressed:
             switch (event.key.code)
             {
-            case sf::Keyboard::Space:
+            case sf::Keyboard::Enter:
                 std::cout << "pressed space" << std::endl;
-                spacePressed = true;
+                enterPressed = true;
                 break;
             }
         }
@@ -250,7 +251,7 @@ void PinballRunner::update(sf::Time elapsedTime) {
 
 void PinballRunner::physicsUpdate(sf::Time elapsedTime)
 {
-    if (!g_bIsGameOver && !display->checkLoading() || !spacePressed)
+    if (!g_bIsGameOver && !display->checkLoading() || !enterPressed)
     {
         //std::cout << "updating" << std::endl;
         const float fSeconds = elapsedTime.asSeconds();
@@ -352,10 +353,9 @@ void PinballRunner::physicsUpdate(sf::Time elapsedTime)
 void PinballRunner::render() {
 	this->window.clear(pink);
 
-	if (!display->checkLoading() || !spacePressed)
+	if (!display->checkLoading() || !enterPressed)
 	{
-        if (display->checkLoading())
-            window.draw(Continue);
+        
 
         for (rectIt = rects.begin(); rectIt != rects.end(); ++rectIt)
         {
@@ -385,15 +385,19 @@ void PinballRunner::render() {
 
         window.draw(rightPaddle);
         window.draw(leftPaddle);
-
+        if (display->checkLoading())
+            window.draw(Continue);
 	}
     
 
     GameObjectManager::getInstance()->draw(&this->window);
 
-    
-    if (spacePressed)
+
+    if (enterPressed)
+    {
         window.draw(Numkeys);
+
+    }
    /* window.draw(highestScoreText);
     window.draw(scoreText);
     window.draw(ballsLeftText);*/
