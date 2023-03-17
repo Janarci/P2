@@ -14,6 +14,7 @@
 #include "PinballTextureManager.h"
 #include <list>
 #include "../FPSCounter.h"
+#include "../TextureDisplay.h"
 
 #include "paddle.h"
 #include "roundBumper.h"
@@ -40,9 +41,11 @@ private:
 	void update(sf::Time elapsedTime);
 	void physicsUpdate(sf::Time elapsedTime);
     FPSCounter* fpsCounter = new FPSCounter();
-
+    TextureDisplay* display = new TextureDisplay();
 
 	//pinball vars
+
+    bool spacePressed = false;
     sf::ContextSettings settings;
 
 
@@ -52,22 +55,24 @@ private:
 	bool g_bIsPlaying = false;
 	bool g_bIsGameOver = false;
 	int g_iScoreTotal = 0;
-	int g_iBallsLeft = 3;
+	int g_iBallsLeft = 420;
 	int g_iHighestScore = 0;
 
-	void loseLife();
+
 
 
     PinballTextureManager txtManager;
 
-	sf::Sprite background;
 
 
     sf::Color darkBlueCol = sf::Color(38, 70, 83);
     sf::Color cyanCol = sf::Color(42, 157, 143);
     sf::Color yellowCol = sf::Color(233, 196, 106);
     sf::Color orangeCol = sf::Color(244, 162, 97);
-    sf::Color redCol = sf::Color(231, 111, 81);
+    sf::Color redCol = sf::Color(231, 69, 0);
+    sf::Color pink = sf::Color(255, 192, 203);
+    sf::Color blue = sf::Color(65, 105, 225);
+    sf::Color yellow = sf::Color(255, 255, 102);
 
 
 
@@ -85,30 +90,34 @@ private:
     std::list<RectangleBumper> rectangleBumpers;
     std::list<RectangleBumper>::iterator rectBumperIt;
 
-    Rect topWall = Rect(Vector2D(18, 8.8), Vector2D(17, 0.7), darkBlueCol);
+    Rect topWall = Rect(Vector2D(50, -2), Vector2D(50, 3), darkBlueCol);
     Rect leftWall = Rect(Vector2D(0.5, 27.5), Vector2D(0.7, 30), darkBlueCol);
 
-    Rect rightWall = Rect(Vector2D(35.5, 27.5), Vector2D(0.7, 30), darkBlueCol);
-    Rect topRightCorner = Rect(Vector2D(34.8, 9.8), Vector2D(0.5, 0.5), darkBlueCol);
-    Rect tunnel = Rect(Vector2D(32.9, 34), Vector2D(0.2, 21), darkBlueCol);
+    Rect rightWall = Rect(Vector2D(95, 27.5), Vector2D(0.7, 30), darkBlueCol);
+    Rect topRightCorner = Rect(Vector2D(94, 9.8), Vector2D(1, 1), darkBlueCol);
+    Rect tunnel = Rect(Vector2D( 88.8, 37.2), Vector2D(0.2, 21), darkBlueCol);
 
-    RoundBumper roundBumper1 = RoundBumper(Vector2D(10, 13), 1.7, 10, cyanCol);
-    RoundBumper roundBumper2 = RoundBumper(Vector2D(27, 16), 1.7, 10, yellowCol);
-    RoundBumper largeRoundBumper = RoundBumper(Vector2D(17.5, 21), 2, 10, orangeCol);
-    RoundBumper largeRoundBumper2 = RoundBumper(Vector2D(6, 25), 2, 10, yellowCol);
-    RoundBumper largeRoundBumper3 = RoundBumper(Vector2D(28, 25), 2, 10, cyanCol);
+    RoundBumper roundBumper1 = RoundBumper(Vector2D(63, 13), 2.2, 10, redCol);
+    RoundBumper roundBumper2 = RoundBumper(Vector2D(10, 16), 2.2, 10, redCol);
+    RoundBumper largeRoundBumper = RoundBumper(Vector2D(40,18), 2.7, 10, blue);
+    RoundBumper largeRoundBumper2 = RoundBumper(Vector2D(55, 27), 2.7, 10, redCol);
+    RoundBumper largeRoundBumper3 = RoundBumper(Vector2D(28, 10), 2.7, 10, yellow);
 
-    Paddle leftPaddle = Paddle(Vector2D(10, 44.5), Vector2D(5, 0.8), 0.5, true, cyanCol);
-    Paddle rightPaddle = Paddle(Vector2D(23, 44.5), Vector2D(5, 0.8), 0.5, false, cyanCol);
+    Paddle leftPaddle = Paddle(Vector2D(29.6, 46.5), Vector2D(10, 1.5), 0.5, true, blue);
+    Paddle rightPaddle = Paddle(Vector2D(57.6, 46.5), Vector2D(10,1.5), 0.5, false, yellow);
 
-    Rect bottomLeftCorner = Rect(Vector2D(1.3, 37.5), Vector2D(0.5, 0.5), darkBlueCol);
-    Rect bottomRightCorner = Rect(Vector2D(32.5, 37.5), Vector2D(0.5, 0.5), darkBlueCol);
+    //end of ramps
+    Rect bottomLeftCorner = Rect(Vector2D(1.3, 25), Vector2D(2, 2), darkBlueCol);
+    Rect bottomRightCorner = Rect(Vector2D(87, 25), Vector2D(2, 2), darkBlueCol);
 
-    OBB leftRamp = OBB(Vector2D(5.5, 40.5), Vector2D(6, 0.5), 0.6, darkBlueCol);
-    OBB rightRamp = OBB(Vector2D(27.7, 40.5), Vector2D(6, 0.5), -0.6, darkBlueCol);
+    //ramps
+    OBB leftRamp = OBB(Vector2D(12.6, 34), Vector2D(16, 1.8), 0.6, darkBlueCol);
+    OBB rightRamp = OBB(Vector2D(74.6, 34), Vector2D(16, 1.8), -0.6, darkBlueCol);
 
-    RectangleBumper rectBumper1 = RectangleBumper(Vector2D(4.5, 33), Vector2D(0.5, 2), 0.3, 20, darkBlueCol);
-    RectangleBumper rectBumper2 = RectangleBumper(Vector2D(30, 33), Vector2D(0.5, 2), -0.3, 20, darkBlueCol);
+
+    //middle rec bumpers
+    RectangleBumper rectBumper1 = RectangleBumper(Vector2D(20, 25), Vector2D(0.8, 4), 0.3, 20, darkBlueCol);
+    RectangleBumper rectBumper2 = RectangleBumper(Vector2D(50, 13), Vector2D(0.8, 4), -0.3, 20, darkBlueCol);
 
     sf::Font arcadeFont;
     //arcadeFont.loadFromFile("resources\\BebasNeue Regular.otf");
@@ -121,6 +130,8 @@ private:
     sf::Text ballsLeftText = sf::Text("Balls: " + std::to_string(g_iBallsLeft), arcadeFont, 60);
 
     sf::Text gameOverText = sf::Text("GAME OVER", arcadeFont, 150);
+    sf::Text Continue = sf::Text("PRESS SPACE TO CONTINUE", arcadeFont, 150);
+    sf::Text Numkeys = sf::Text("PRESS NUMKEYS 1-8", arcadeFont, 150);
 
 
 

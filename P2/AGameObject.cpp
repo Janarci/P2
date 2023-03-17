@@ -3,6 +3,7 @@
 AGameObject::AGameObject(String name)
 {
 	this->name = name;
+	this->Active = true;
 }
 
 AGameObject::~AGameObject() {
@@ -12,6 +13,16 @@ AGameObject::~AGameObject() {
 
 AGameObject::String AGameObject::getName() {
 	return this->name;
+}
+
+bool AGameObject::isActive()
+{
+	return this->Active;
+}
+
+void AGameObject::setActive(bool active)
+{
+	this->Active = active;
 }
 
 void AGameObject::draw(sf::RenderWindow* targetWindow) {

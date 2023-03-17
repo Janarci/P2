@@ -65,10 +65,16 @@ void TextureManager::loadSingleStreamAsset(int index, IExecutionEvent* execution
 
 
 			//<code here for loading asset>
-			String assetName = "";
+
+			String path = entry.path().generic_string();
+			std::vector<String> tokens = StringUtils::split(path, '/');
+			String assetName = StringUtils::split(tokens[tokens.size() - 1], '.')[0];
+
+			std::cout << assetName << std::endl;
+
 			//std::u8string path_string = entry.path().u8string();
 
-			StreamAssetLoader* assetLoader = new StreamAssetLoader(entry.path().string(), executionEvent);
+			StreamAssetLoader* assetLoader = new StreamAssetLoader(entry.path().string(), assetName, executionEvent);
 
 			//assetLoader->start();
 
@@ -77,6 +83,27 @@ void TextureManager::loadSingleStreamAsset(int index, IExecutionEvent* execution
 
 			//this->instantiateAsTexture(entry.path().string(), assetName, true);
 			//std::cout << "[TextureManager] Loaded streaming texture: " << assetName << std::endl;
+			break;
+		}
+
+		fileNum++;
+	}
+}
+
+void TextureManager::loadSingleStreamAssetP2(int index, IExecutionEvent* executionEvent)
+{
+	int fileNum = 0;
+
+	for (const auto& entry : std::filesystem::directory_iterator(STREAMING_PATH)) {
+		if (index == fileNum)
+		{
+			String assetName = "";
+			std::cout << entry.path().string() << std::endl;
+
+			StreamAssetLoader* assetLoader = new StreamAssetLoader(entry.path().string(), assetName, executionEvent);
+
+			threadPool->scheduleTask(assetLoader);
+
 			break;
 		}
 
@@ -109,6 +136,11 @@ int TextureManager::getNumFrames(const String assetName)
 sf::Texture* TextureManager::getStreamTextureFromList(const int index)
 {
 	return this->streamTextureList[index];
+}
+
+TextureManager::HashTable TextureManager::getTextureMap()
+{
+	return this->textureMap;
 }
 
 int TextureManager::getNumLoadedStreamTextures() const

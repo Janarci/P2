@@ -11,7 +11,7 @@ class AudioLoader : public IWorkerAction
 private: typedef std::string String;
 
 public:
-	AudioLoader(String path, IExecutionEvent* executionEvent, int key);
+	AudioLoader(String path, IExecutionEvent* executionEvent, String assetName);
 	~AudioLoader();
 
 private:
@@ -20,5 +20,5 @@ private:
 
 	String path;
 	IExecutionEvent* execEvent;
-	int key;
+	String assetName;
 };

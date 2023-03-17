@@ -4,11 +4,11 @@
 
 #include "IExecutionEvent.h"
 
-AudioLoader::AudioLoader(String path, IExecutionEvent* executionEvent, int key)
+AudioLoader::AudioLoader(String path, IExecutionEvent* executionEvent, String assetName)
 {
 	this->path = path;
 	this->execEvent = executionEvent;
-	this->key = key;
+	this->assetName = assetName;
 
 }
 
@@ -20,9 +20,8 @@ AudioLoader::~AudioLoader()
 void AudioLoader::onStartTask()
 {
 	IETThread::sleep(3000);
-	//TextureManager::getInstance()->instantiateAsTexture(this->path, "wew", true);
-	AudioManager::getInstance()->loadBuffer(std::to_string(this->key), this->path);
+	AudioManager::getInstance()->loadBuffer(this->assetName, this->path);
 
-	this->execEvent->onFinishedExecution();
+	this->execEvent->onFinishedExecutionSound();
 	delete this;
 }

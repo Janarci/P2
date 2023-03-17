@@ -8,7 +8,7 @@ class StreamAssetLoader: public IWorkerAction
 private: typedef std::string String;
 
 public:
-	StreamAssetLoader(String path, IExecutionEvent* executionEvent);
+	StreamAssetLoader(String path, String assetName, IExecutionEvent* executionEvent);
 	~StreamAssetLoader();
 
 private:
@@ -16,6 +16,7 @@ private:
 
 
 	String path;
+	String assetName;
 	IExecutionEvent* execEvent;
 };
 

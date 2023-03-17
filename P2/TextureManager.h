@@ -16,10 +16,12 @@ public:
 	void loadFromAssetList(); //loading of all assets needed for startup
 	void loadStreamingAssets();
 	void loadSingleStreamAsset(int index, IExecutionEvent* executionEvent); //loads a single streaming asset based on index in directory
+	void loadSingleStreamAssetP2(int index, IExecutionEvent* executionEvent); //loads a single streaming asset based on index in directory
 	sf::Texture* getFromTextureMap(const String assetName, int frameIndex);
 	int getNumFrames(const String assetName);
 
 	sf::Texture* getStreamTextureFromList(const int index);
+	HashTable getTextureMap();
 	int getNumLoadedStreamTextures() const;
 	void instantiateAsTexture(String path, String assetName, bool isStreaming);
 
@@ -34,9 +36,9 @@ private:
 	HashTable textureMap;
 	TextureList baseTextureList;
 	TextureList streamTextureList;
-	ThreadPool* threadPool = new ThreadPool("newThread", 8);
+	ThreadPool* threadPool = new ThreadPool("TextureThread", 8);
 
-	const std::string STREAMING_PATH = "Media/Streaming/";
+	const std::string STREAMING_PATH = "Media/Streaming/P2";
 
 	void countStreamingAssets();
 

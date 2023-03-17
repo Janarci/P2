@@ -9,8 +9,8 @@
 #define PADDLE_SPEED (-15)	/*!< Paddle speed constant*/
 #define PADDLE_MAX_ANGLE 0.6 /*!< Max angle constant*/
 #define PADDLE_MIN_ANGLE (-0.4) /*!< Min angle constant*/
-#define MAX_VELOCITY_X 30	/*!< Maximum x velocity*/
-#define MAX_VELOCITY_Y 30 /*!< Maxiumum y velocity*/
+#define MAX_VELOCITY_X 23	/*!< Maximum x velocity*/
+#define MAX_VELOCITY_Y 23 /*!< Maxiumum y velocity*/
 
 
 #endif 

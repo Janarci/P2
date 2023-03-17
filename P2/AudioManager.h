@@ -5,9 +5,18 @@
 #include "IETThread.h"
 #include "IWorkerAction.h"
 #include "ThreadPool.h"
+
+
+
 class IExecutionEvent;
 class AudioManager
 {
+public:
+	typedef std::string String;
+	typedef std::vector<sf::Sound*> Sound;
+
+	typedef std::unordered_map<std::string, Sound> SoundMap;
+
 private:
 
 	typedef std::string String;
@@ -22,6 +31,8 @@ public:
 	void loadBuffer(std::string, std::string);
 
 	std::vector<sf::Sound*> soundList;
+	SoundMap soundMap;
+	int totalAssets = 0;
 
 private:
 
@@ -34,8 +45,7 @@ private:
 
 	std::vector<sf::Sound*> getSoundList();
 
-	ThreadPool* threadPool = new ThreadPool("newThread", 2);
-
+	ThreadPool* threadPool = new ThreadPool("AudioThread", 2);
 
 	const std::string STREAMING_PATH = "Media/OST/wav";
 

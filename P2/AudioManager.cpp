@@ -7,7 +7,8 @@
 
 #include "AudioLoader.h"
 #include "IExecutionEvent.h"
-
+#include "StringUtils.h"
+namespace fs = std::filesystem;
 
 AudioManager* AudioManager::sharedInstance = NULL;
 
@@ -32,6 +33,9 @@ AudioManager::AudioManager(String path, IExecutionEvent* executionEvent)
 
 AudioManager::AudioManager()
 {
+	int count = std::distance(fs::directory_iterator(STREAMING_PATH), fs::directory_iterator{});
+	totalAssets = totalAssets + count;
+
 	this->threadPool->startScheduler();
 
 }
@@ -78,9 +82,9 @@ void AudioManager::loadAll(String path, IExecutionEvent* executionEvent)
 void AudioManager::LoadAudio(int index, IExecutionEvent* executionEvent)
 {
 	int fileNum = 0;
+
+
 	for (const auto& entry : std::filesystem::directory_iterator(STREAMING_PATH)) {
-		
-		
 		if (index == fileNum)
 		{
 			//simulate loading of very large file
@@ -88,14 +92,19 @@ void AudioManager::LoadAudio(int index, IExecutionEvent* executionEvent)
 
 
 			//<code here for loading asset>
-			String assetName = "";
-			std::cout << entry.path().string() << std::endl;
+
+			String path = entry.path().generic_string();
+			std::vector<String> tokens = StringUtils::split(path, '/');
+			String assetName = StringUtils::split(tokens[tokens.size() - 1], '.')[0];
+
+
+			std::cout << assetName <<" sound"<< std::endl;
+
 			//std::u8string path_string = entry.path().u8string();
 
-			AudioLoader* audioLoader = new AudioLoader(entry.path().string(), executionEvent, index);
+			AudioLoader* audioLoader = new AudioLoader(entry.path().string(), executionEvent, assetName);
 
 			//assetLoader->start();
-
 
 			threadPool->scheduleTask(audioLoader);
 
@@ -121,8 +130,13 @@ void AudioManager::loadBuffer(std::string key, std::string path)
 	//sf::SoundBuffer* m_soundBuffer;
 	//m_soundBuffer = AudioManager::getInstance()->getBuffer(key);
 	//sound->setBuffer(*m_soundBuffer);
+
 	sound->setBuffer(*AudioManager::getInstance()->getBuffer(key));
+	sound->setVolume(20);
+	soundMap[key].push_back(sound);
+
 	soundList.push_back(sound);
+
 	std::cout << "loaded" << std::endl;
 
 }

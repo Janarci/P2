@@ -25,7 +25,7 @@ std::list<Ball>::iterator ballIt;
 bool g_bIsPlaying = false;
 bool g_bIsGameOver = false;
 int g_iScoreTotal = 0;
-int g_iBallsLeft = 3;
+int g_iBallsLeft = 420;
 int g_iHighestScore = 0;
 
 void loseLife();

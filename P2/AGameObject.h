@@ -13,6 +13,8 @@ public:
 	virtual void update(sf::Time deltaTime) = 0;
 	virtual void draw(sf::RenderWindow* targetWindow);
 	String getName();
+	bool isActive();
+	void setActive(bool active);
 
 	virtual void setPosition(float x, float y);
 	virtual void setScale(float x, float y);
@@ -22,6 +24,7 @@ public:
 
 protected:
 	String name;
+	bool Active;
 	sf::Sprite* sprite;
 	sf::Texture* texture;
 
