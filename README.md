@@ -24,3 +24,5 @@ game could be run by running the P2.exe file
 P2 > game > P2.exe
 
 ======================================================================
+
+Powerpoint presentation = P2.pptx
