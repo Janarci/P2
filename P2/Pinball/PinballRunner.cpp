@@ -173,7 +173,6 @@ void PinballRunner::run() {
         physicsUpdate(elapsedTime);
         render();
 
-        fpsCounter->updateFPSUpdated(elapsedTime);
 
 	}
 }
